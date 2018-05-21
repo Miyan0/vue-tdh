@@ -14,15 +14,19 @@
         </div>
         <div v-else>
             <button @click="onAddRapport">Ajouter Nouveau Rapport</button>
+            <button @click="login">Login</button>
         </div>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'RapportDetail',
   props: ['rapport'],
   methods: {
+    ...mapActions(['login']),
     onAddRapport() {
       this.$emit('addNewRapport')
     }
