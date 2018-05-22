@@ -1,45 +1,28 @@
 <template>
   <div id="app">
-    <rapport-list :rapports="rapports" @rapportSelect="onRapportSelect"></rapport-list>
-    <rapport-detail :rapport="selectedRapport" @addNewRapport="onAddNewRapport"></rapport-detail>
+    <div>
+        <app-header></app-header>
+      </div>
+    <main>
+      <router-view></router-view>
+    </main>
+    
+    
 
   </div>
 </template>
 
 <script>
-import RapportDetail from './components/RapportDetail'
-import RapportList from './components/RapportList'
+import AppHeader from './components/AppHeader'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'app',
-  data() {
-    return {
-      rapports: [
-        {
-          id: 1,
-          name: 'Rapport 1'
-        },
-        {
-          id: 2,
-          name: 'Rapport 2'
-        },
-        {
-          id: 3,
-          name: 'Rapport 3'
-        },
-        {
-          id: 4,
-          name: 'Rapport 4'
-        }
-      ],
-      selectedRapport: null,
-      nextId: 5
-    }
-  },
+  
   components: {
-    RapportDetail,
-    RapportList
+    AppHeader,
   },
+  computed: mapGetters(['isAuthenticated']),
   methods: {
     onRapportSelect(rapport) {
       this.selectedRapport = rapport
@@ -57,10 +40,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
   #app {
     display: flex;
-    justify-content: space-between;
-    align-items: center
+    flex-direction: column;
+
+    main {
+      margin: 1rem;
+    }
+    
+    
   }
 </style>

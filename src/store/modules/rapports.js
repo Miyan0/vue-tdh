@@ -1,34 +1,58 @@
-import api from '../../api/django'
+
 
 const state = {
-  token: null
+  rapports: [
+    {
+      id: 1,
+      name: 'Rapport 1'
+    },
+    {
+      id: 2,
+      name: 'Rapport 2'
+    },
+    {
+      id: 3,
+      name: 'Rapport 3'
+    },
+    {
+      id: 4,
+      name: 'Rapport 4'
+    }
+  ],
+  selectedRapport: null,
+  nextId: 5
 }
 
 const getters = {
-  isAuthenticated: state => !!state.token  // flip null or string to boolean
+  selectedRapport: state => state.selectedRapport,
+  allRapports: state => state.rapports
 }
 
 const actions = {
-  login: ({ commit }) => {
-    api.login('miyano', 'de00de11')
-      .then(response => {
-        const token = response.data.token
-        console.log('in action, token:', token)
-        commit('setToken', token)
-      })
-      .catch(error => {
-        console.log('error :', error)
-      })
-    
+  selectRapport: ({commit}, rapport) => {
+    console.log('rapport :', rapport)
+    commit('setSelectedRapport', rapport)
   },
-  logout: ({ commit }) => {
-    commit('setToken', null)
+  addRapport: ({ commit, state }) => {
+    const rapport = {
+      id: state.nextId,
+      name: `Rapport ${state.nextId}`
+    }
+    commit('addRapport', rapport)
+    commit('incrementNextId')
+
   }
 }
 
 const mutations = {
-  setToken: (state, token) => {
-    state.token = token
+  setSelectedRapport: (state, rapport) => {
+    state.selectedRapport = rapport
+  },
+  addRapport: (state, rapport) => {
+    state.rapports.push(rapport) // bad, use immutable way
+  },
+  incrementNextId: (state) => {
+    state.nextId++
   }
 }
 

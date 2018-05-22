@@ -7,6 +7,7 @@ const login = async (username, password) => {
     username,
     password
   }
+  console.log('api.login: username :', username)
   return await axios.post(`${ROOT_URL}/api-token-auth/`, postdata)
 }
 
