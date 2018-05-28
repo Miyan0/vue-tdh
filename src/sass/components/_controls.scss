@@ -1,0 +1,40 @@
+.form-group {
+  label {
+    font-size: 1.2rem;
+    font-family: inherit;
+    color: $color-form-label;
+  }
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-control {
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #E3E3E3;
+  color: inherit;  
+  border-radius: 3rem;
+  line-height: normal;
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: inherit;
+  padding: 1rem 1.8rem;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+}
+
+.select {
+  appearance: none;
+  font-size: 1.2rem;
+  // height: 4rem;
+  //border-radius: 50%;
+}
+

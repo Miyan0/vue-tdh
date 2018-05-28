@@ -1,0 +1,7 @@
+
+GET http://localhost:8000/api/rapports?limit=5
+Accept: */*
+Cache-Control: no-cache
+Authorization: Token 634bda8cfd3e13f3b96c09a840c06a49ff9b32c1
+
+###

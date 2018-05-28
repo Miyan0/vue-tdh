@@ -1,8 +1,8 @@
 @charset 'UTF-8';
 // COLORS
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
+$color-primary: #f96332;
+$color-primary-light: lighten($color-primary, 39%);
+$color-primary-dark: rgba(249, 99, 50, .3);
 
 $color-secondary-light: #ffb900;
 $color-secondary-dark: #ff7730;
@@ -12,16 +12,19 @@ $color-tertiary-dark: #5643fa;
 
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
+$color-grey-light-3: #aaa;
 
 $color-grey-dark: #777;
 $color-grey-dark-2: #999;
 $color-grey-dark-3: #333;
 
 $color-white: #fff;
-$color-black: #000;
+$color-black: #2c2c2c;
 
 $color-red: red;
 $color-blue: blue;
+
+$color-form-label: #9A9A9A;
 
 // FONT
 $default-font-size: 1.6rem;

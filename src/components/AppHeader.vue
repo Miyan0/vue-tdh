@@ -24,6 +24,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import "../sass/abstracts/_variables";
+
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -33,7 +35,7 @@ export default {
 
     a, a:visited {
       text-decoration: none;
-      color: yellowgreen;
+      color: $color-primary;
       cursor: pointer;
     }
   }
