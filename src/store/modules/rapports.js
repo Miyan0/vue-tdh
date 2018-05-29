@@ -1,5 +1,6 @@
 import api from '../../api/django'
 import qs from 'qs'
+import Vue from 'vue'
 
 const DOMAIN = 'http://localhost:8000'
 const RAPPORTS_URL = `${DOMAIN}/api/rapports/`
@@ -73,7 +74,7 @@ const state = {
   nextPageNumber: null,
   pageNumber: 0,
   fetchedCount: 0,
-  pageCount: 0
+  pageCount: 0,
 }
 
 const getters = {
@@ -102,11 +103,8 @@ const getters = {
       return state.rapportTypes[state.selectedRapport.rapport_type]
     }
     return state.rapportTypes[0]
-  },
-  rapportCopy: state => {
-    // deep copy
-    return JSON.parse(JSON.stringify(state.selectedRapport))
   }
+  
 }
 
 const actions = {
@@ -151,7 +149,7 @@ const actions = {
 
 const mutations = {
   setSelectedRapport: (state, rapport) => {
-    state.selectedRapport = rapport
+    state.selectedRapport = JSON.parse(JSON.stringify(rapport))
   },
   addRapport: (state, rapport) => {
     state.rapports = { ...state.rapports, rapport} 
@@ -177,6 +175,44 @@ const mutations = {
     state.nextPageNumber = data.next_page_number
     state.prevPageNumber = data.prev_page_number
     state.pageNumber = data.page_number
+  },
+  // updates for individual fields using a form
+  // we only update the copy, the original will be updated
+  // after validation.
+  // TODO: validation
+  
+  updateProcType: (state, value) => {
+    state.selectedRapport.procedure_type = value
+  },
+
+  updateRapportType: (state, value) => {
+    state.selectedRapport.rapport_type = value
+  },
+  
+  updateNoCause: (state, value) => {
+    state.selectedRapport.no_cause = value
+  },
+
+  updateAudition: (state, value) => {
+    state.selectedRapport.audition_date = value
+  },
+
+  revertFormChanges: (state) => {
+    // annule les changements dans le formulaire d'edition d'un rapport
+
+    // get the rapport from the list (which has the unchanged values)
+    const rapport = state.rapports.find(rapport => rapport.id === state.selectedRapport.id)
+    // copy values from the list
+    state.selectedRapport = JSON.parse(JSON.stringify(rapport))
+  },
+
+  saveFormChanges: (state) => {
+    const item = state.rapports.find(rapport => rapport.id === state.selectedRapport.id)
+    const index = state.rapports.indexOf(item)
+    if (index < 0) {
+      console.error('Impossible de trouver l\'element dans les rapports!!!') // eslint-disable-line no-console
+    }
+    Vue.set(state.rapports, index, JSON.parse(JSON.stringify(state.selectedRapport)))
   }
 
 }

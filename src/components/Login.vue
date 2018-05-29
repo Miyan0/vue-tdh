@@ -23,7 +23,7 @@
       <label for="id-password" class="form__label">Password</label>
     </p>
 
-    <button @click="onSubmit">OK</button>
+    <button @click="onSubmit" class="btn">OK</button>
 
   </form>
 </template>

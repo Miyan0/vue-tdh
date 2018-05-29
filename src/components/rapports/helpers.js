@@ -18,6 +18,13 @@ const formatNoCause = (numero) => {
   return `${numero.slice(0,3)}-${numero.slice(3,6)}-${numero.slice(6)}`
 }
 
+const unformatNoCause = (numero) => {
+  if (numero.indexOf('-')) {
+    return numero.split('-').join('')
+  }
+  return numero
+}
+
 /**
  * Return a moment showing only the time part
  * @param {Date} aDate 
@@ -85,6 +92,7 @@ const setTime2Date = (aDate, aTime) => {
 export default {
   formatAddress,
   formatNoCause,
+  unformatNoCause,
 
   dateTime2Date,
   setTime2Date,

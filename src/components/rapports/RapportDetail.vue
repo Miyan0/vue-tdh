@@ -4,12 +4,12 @@
       <!-- left section -->
       <section class="detail__left-section">
         <div class="form-group">
-            <label class="form-label" for="id_rapport_type">Procédure</label>
+            <label class="form-label" for="id_rapport_type">Rapport</label>
           <select
               name="proc-type"
               class="form-control select"
               id="id_rapport_type"
-              :value="rapportTypes[rapportCopy.rapport_type]"
+              v-model="rapportType"
           >
             <option v-for="(option, index) in rapportTypes" :value="option" :key="index">
               {{ option }}
@@ -22,13 +22,24 @@
               name="proc-type"
               class="form-control select"
               id="id_proc_type"
-              :value="procedureTypes[rapportCopy.procedure_type]"
+              v-model="procType"
           >
             <option v-for="(option, index) in procedureTypes" :value="option" :key="index">
               {{ option }}
             </option>
           </select>
-          
+        </div>
+        <div class="form-group" v-show="showAuditionDate">
+          <label class="form-label" for="id_audition">Audition</label>
+          <input
+              class="form-control"
+              type="date"
+              placeholder="Audition"
+              id="id_audition"
+              name="audition"
+              v-model="selectedRapport.audition_date"
+              required
+          >
         </div>
         <div class="form-group">
           <label class="form-label" for="id_nocause">#</label>
@@ -38,27 +49,19 @@
               placeholder="no cause"
               id="id_nocause"
               name="nocause"
-              v-model="rapportCopy.no_cause"
+              @focus="onNoCauseFocus"
+              @change="onNoCauseChange"
+              :value="noCause"
               required
           >
         </div>
-        <div class="form-group">
-          <label class="form-label" for="id_audition">Audition</label>
-          <input
-              class="form-control"
-              type="date"
-              placeholder="Audition"
-              id="id_audition"
-              name="audtion"
-              v-model="rapportCopy.audition_date"
-              required
-          >
-        </div>
+        
         <div class="form-group">
           <label class="form-label" for="id_lot">Lot</label>
           <input class="form-control" type="text" placeholder="secteur" id="id_lot" name="no_lot"
-                 v-model="rapportCopy.no_lot" required>
+                 v-model="selectedRapport.no_lot" disabled>
         </div>
+        
       </section> <!-- end left section -->
       
       <!-- middle section -->
@@ -88,15 +91,14 @@
                 required
             >
           </div>
-          
-          
         </div>
       
       </section> <!-- end middle section -->
       
       <!-- right section -->
       <section class="detail__right-section">
-        
+        <button class="btn" @click.prevent="onRevert">Revert</button>
+        <button class="btn" @click.prevent="onSave">Save</button>
       </section> <!-- end right section -->
       
     </template>
@@ -110,21 +112,30 @@
 <script>
 import {mapGetters} from 'vuex'
 import moment from 'moment'
+import helpers from './helpers'
+
+const hasAuditionDate = (procType) => {
+  // procedure types which needs an audtion date (ex subpoena)
+  const typesWithAudition = [1, 2, 3, 10, 11, 12, 13, 14]
+  return typesWithAudition.indexOf(procType) !== -1
+}
 
 
 export default {
   name: 'RapportDetail',
+  components: {
+  },
   data() {
     return {
-      demarcheDate: null,
-      demarcheTime: null
+      showAuditionDate: this.hasAuditionDate,
     }
   },
   
   beforeUpdate() {
-    console.log('updated Called')
-    this.demarcheDate = moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
-    this.demarcheTime = moment(this.selectedRapport.demarche_date).format('HH:mm')
+    console.log('RapportDetail, updated Called')
+    // this.demarcheDate = moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
+    // this.demarcheTime = moment(this.selectedRapport.demarche_date).format('HH:mm')
+    this.showAuditionDate = hasAuditionDate(this.selectedRapport.procedure_type)
   },
   computed: {
     ...mapGetters([
@@ -133,10 +144,61 @@ export default {
       'rapportTypes',
       'rapportTypeStr',
       'procedureTypeStr',
-      'rapportCopy'
     ]),
+
+    demarcheDate() {
+      return moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
+    },
+
+    demarcheTime() {
+      return moment(this.selectedRapport.demarche_date).format('HH:mm')
+    },
+    
+    rapportType: {
+      get () {
+        const type = this.$store.state.rapports.selectedRapport.rapport_type
+        return this.$store.state.rapports.rapportTypes[type]
+      },
+      set (value) {
+        const types = this.$store.state.rapports.rapportTypes
+        this.$store.commit('updateRapportType', types.indexOf(value))
+      }
+    },
+    noCause() {
+      return helpers.formatNoCause(this.$store.state.rapports.selectedRapport.no_cause)
+    },
+    procType: {
+      get () {
+        const type = this.$store.state.rapports.selectedRapport.procedure_type
+        return this.$store.state.rapports.procedureTypes[type]
+      },
+      set (value) {
+        const types = this.$store.state.rapports.procedureTypes
+        this.$store.commit('updateProcType', types.indexOf(value))
+      }
+    },
+
   },
-  methods: {}
+  methods: {
+    onNoCauseFocus(event) {
+      // remove '-'
+      const val = event.target.value
+      event.target.value = helpers.unformatNoCause(val)
+    },
+    onNoCauseChange() {
+      const val = event.target.value
+      console.log('onChange, val :', val)
+      event.target.value = helpers.formatNoCause(val)
+      this.$store.commit('updateNoCause', val)
+    },
+    onRevert() {
+      this.$store.commit('revertFormChanges', this.selectedRapport)
+    },
+    onSave() {
+      this.$store.commit('saveFormChanges', this.selectedRapport)
+    }
+
+  }
 }
 </script>
 

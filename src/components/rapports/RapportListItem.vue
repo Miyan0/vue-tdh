@@ -1,6 +1,6 @@
 <template>
 
-    <li @click="selectRapport(rapport)" :class="{selected: rapport === selectedRapport}">
+    <li @click="selectRapport(rapport)" :class="{selected: isSelected}">
       # <span class="txt-bold">{{noCause}}</span> - {{address}} ({{ rapport.secteur }})
       <br>
       Lot: {{ rapport.no_lot}} - {{ rapport.demarche_date}}
@@ -25,6 +25,12 @@ export default {
     },
     noCause() {
       return helpers.formatNoCause(this.rapport.no_cause)
+    },
+    isSelected() {
+      if (this.selectedRapport == null) {
+        return false
+      }
+      return this.rapport.id === this.selectedRapport.id
     }
   }
 }

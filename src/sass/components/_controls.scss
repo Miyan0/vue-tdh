@@ -18,13 +18,14 @@
   background-color: transparent;
   border: 1px solid #E3E3E3;
   color: inherit;  
-  border-radius: 3rem;
+  border-radius: 0.5rem;
   line-height: normal;
   display: block;
   width: 100%;
   font-size: 1.2rem;
   font-family: inherit;
   padding: 1rem 1.8rem;
+  height: 4rem;
 
   &:focus {
     border-color: $color-primary;
@@ -32,9 +33,24 @@
 }
 
 .select {
-  appearance: none;
+  // appearance: none;
   font-size: 1.2rem;
-  // height: 4rem;
-  //border-radius: 50%;
+  height: 4rem;
+  // border-radius: 50%;
+  
+}
+
+.select:after {
+  content: "▼";
+  padding: 12px 8px;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;  
+  color: red;  
 }
 

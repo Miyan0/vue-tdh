@@ -4,8 +4,13 @@
       <router-link to="/">Vue-TDH</router-link>
     </div>
     <div class="navbar-right">
-      <router-link to="/login" v-if="!isAuthenticated" @click="onClickLogin">Login</router-link>
-      <a v-else @click="logout">Logout</a>
+      <template v-if="isAuthenticated">
+        <router-link to="/"  >Facturation</router-link>
+        <router-link to="/"  >Rapports</router-link>
+        <router-link to="/"  >Payes</router-link>
+        <a  @click="logout">Logout</a>
+      </template>
+      <router-link v-else to="/login"  @click="onClickLogin">Login</router-link>
     </div>
   </nav>
 </template>
@@ -37,6 +42,16 @@ export default {
       text-decoration: none;
       color: $color-primary;
       cursor: pointer;
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      padding: 0 1rem;
     }
   }
 
