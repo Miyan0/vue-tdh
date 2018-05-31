@@ -1,9 +1,18 @@
-export const validateAudition = (audition) => {
+export const validateFutureDate = (aDate) => {
   // validations:
   // date > today
-  // data < today + 11 mois
   const today = new Date()
-  if (audition <= today) {
+  if (aDate <= today) {
+    return false
+  }
+  return true
+}
+
+export const validatePreviousDate = (aDate) => {
+  // validations:
+  // date <= today
+  const today = new Date()
+  if (aDate > today) {
     return false
   }
   return true

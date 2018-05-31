@@ -1,5 +1,5 @@
 <template>
-  <form class="detail">
+  <form class="detail panel">
     <template v-if="selectedRapport">
       <!-- left section -->
       <section class="detail__left-section">
@@ -22,14 +22,15 @@
               name="proc-type"
               class="form-control select"
               id="id_proc_type"
-              v-model="procType"
+              :value="procType"
+              @change="onProcTypeChange"
           >
             <option v-for="(option, index) in procedureTypes" :value="option" :key="index">
               {{ option }}
             </option>
           </select>
         </div>
-        <div class="form-group" v-show="showAuditionDate">
+        <div class="form-group" v-if="showAuditionDate">
           <label class="form-label" for="id_audition">Audition</label>
           <input
               class="form-control"
@@ -49,8 +50,10 @@
               placeholder="no cause"
               id="id_nocause"
               name="nocause"
+              ref="nocause"
               @focus="onNoCauseFocus"
               @change="onNoCauseChange"
+              @blur="onNoCauseBlur"
               :value="noCause"
               required
           >
@@ -61,14 +64,13 @@
           <input class="form-control" type="text" placeholder="secteur" id="id_lot" name="no_lot"
                  v-model="selectedRapport.no_lot" disabled>
         </div>
-        
       </section> <!-- end left section -->
       
       <!-- middle section -->
       <section class="detail__middle-section">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="id_proc_type">Démarche</label>
+            <label class="form-label" for="id_demarche_date">Démarche</label>
             <input
                 class="form-control"
                 type="date"
@@ -80,7 +82,7 @@
             >
           </div>
           <div class="form-group">
-            <label class="form-label" for="id_proc_type">&nbsp;</label>
+            <label class="form-label" for="id_demarche_date-time">&nbsp;</label>
             <input
                 class="form-control"
                 type="time"
@@ -92,13 +94,108 @@
             >
           </div>
         </div>
-      
+        <div class="form-row">
+          <div class="address-line1">
+            <label class="address-line1__label" for="id_no_civique">Adresse</label>
+            <div class="address-line1__inputs">
+              <input
+                  class="address-line1__no"
+                  type="text"
+                  placeholder="no civique"
+                  id="id_no_civique"
+                  name="no_civique"
+                  v-model="selectedRapport.no_civique"
+                  required
+                  autocomplete="address-line1"
+              >
+            
+              <input
+                  class="address-line1__rue"
+                  type="text"
+                  placeholder="rue"
+                  id="id_rue"
+                  name="rue"
+                  v-model="selectedRapport.rue"
+                  required
+                  autocomplete="address-line1"
+              >
+            
+              <input
+                  class="address-line1__apt"
+                  type="text"
+                  placeholder="apt"
+                  id="id_apt"
+                  name="apt"
+                  v-model="selectedRapport.apt"
+                  required
+                  autocomplete="address-line1"
+              >
+            </div>            
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="id_ville">Ville</label>
+            <input
+                class="form-control"
+                type="text"
+                placeholder="ville"
+                id="id_ville"
+                name="ville"
+                v-model="selectedRapport.ville"
+                required
+                autocomplete="city"
+            >
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="id_km">Km</label>
+            <input
+                class="form-control form-control__medium"
+                type="text"
+                placeholder="km"
+                id="id_km"
+                name="km"
+                v-model="selectedRapport.km"
+                required
+            >
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="id_secteur">Secteur</label>
+            <input
+                class="form-control form-control__small"
+                type="text"
+                placeholder="secteur"
+                id="id_secteur"
+                name="secteur"
+                v-model="selectedRapport.secteur"
+                required
+            >
+          </div>
+          
+          </div>
+          <div class="form-row">
+            <div class="form-group text-area-full">
+            <label class="form-label" for="id_notes">Notes</label>
+            <textarea
+                class="form-control"
+                cols="40"
+                rows="10"
+                placeholder="notes"
+                id="id_notes"
+                name="notes"
+                v-model="selectedRapport.notes"
+                required
+            ></textarea>
+          </div>
+        </div>
       </section> <!-- end middle section -->
       
       <!-- right section -->
       <section class="detail__right-section">
-        <button class="btn" @click.prevent="onRevert">Revert</button>
-        <button class="btn" @click.prevent="onSave">Save</button>
+        <div class="buttons">
+          <button class="btn" @click.prevent="onRevert">Revert</button>
+          <button class="btn" @click.prevent="onSave">Save</button>
+        </div>
       </section> <!-- end right section -->
       
     </template>
@@ -128,15 +225,46 @@ export default {
   data() {
     return {
       showAuditionDate: this.hasAuditionDate,
+      isNewRecord: false,
+      isDirty: false,
+      beforeUpdateCalled: false,
     }
   },
   
+  beforeCreate() {
+    console.log('beforeCreate()')
+  },
+  created() {
+    console.log('created()')
+  },
+  beforeMount() {
+    console.log('beforeMount()')
+  },
+  mounted() {
+    console.log('mounted()')
+  },
+  
+ 
   beforeUpdate() {
-    console.log('RapportDetail, updated Called')
+    console.log('beforeUpdate()')
+    this.beforeUpdateCalled = true
+    this.initState()
     // this.demarcheDate = moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
     // this.demarcheTime = moment(this.selectedRapport.demarche_date).format('HH:mm')
     this.showAuditionDate = hasAuditionDate(this.selectedRapport.procedure_type)
   },
+  updated() {
+    console.log('updated()')
+    this.$refs.nocause.focus()
+  },
+
+  activated() {
+    console.log('activated()')
+  },
+  deactivated() {
+    console.log('deactivated()')
+  },
+
   computed: {
     ...mapGetters([
       'selectedRapport',
@@ -154,32 +282,25 @@ export default {
       return moment(this.selectedRapport.demarche_date).format('HH:mm')
     },
     
-    rapportType: {
-      get () {
-        const type = this.$store.state.rapports.selectedRapport.rapport_type
-        return this.$store.state.rapports.rapportTypes[type]
-      },
-      set (value) {
-        const types = this.$store.state.rapports.rapportTypes
-        this.$store.commit('updateRapportType', types.indexOf(value))
-      }
+    rapportType() {
+      const type = this.$store.state.rapports.selectedRapport.rapport_type
+      return this.$store.state.rapports.rapportTypes[type]
     },
     noCause() {
       return helpers.formatNoCause(this.$store.state.rapports.selectedRapport.no_cause)
     },
-    procType: {
-      get () {
-        const type = this.$store.state.rapports.selectedRapport.procedure_type
-        return this.$store.state.rapports.procedureTypes[type]
-      },
-      set (value) {
-        const types = this.$store.state.rapports.procedureTypes
-        this.$store.commit('updateProcType', types.indexOf(value))
-      }
+    procType() {
+      const type = this.$store.state.rapports.selectedRapport.procedure_type
+      return this.$store.state.rapports.procedureTypes[type]
     },
 
   },
   methods: {
+    initState() {
+      this.isNewRecord = false
+      this.isNewRecord = false,
+      this.isDirty = false
+    },
     onNoCauseFocus(event) {
       // remove '-'
       const val = event.target.value
@@ -187,9 +308,17 @@ export default {
     },
     onNoCauseChange() {
       const val = event.target.value
-      console.log('onChange, val :', val)
       event.target.value = helpers.formatNoCause(val)
       this.$store.commit('updateNoCause', val)
+    },
+    onNoCauseBlur(event) {
+      event.target.value = helpers.formatNoCause(event.target.value)
+    },
+    onProcTypeChange(event) {
+      // console.log('event.target.value :', event.target.value)
+      const types = this.$store.state.rapports.procedureTypes
+      this.$store.commit('updateProcType', types.indexOf(event.target.value))
+      
     },
     onRevert() {
       this.$store.commit('revertFormChanges', this.selectedRapport)
@@ -207,17 +336,40 @@ export default {
   @import "../../sass/abstracts/_variables";
   
   .detail {
-    min-width: 60%;
+    min-width: 65%;
     margin-left: 2rem;
     margin-right: 2rem;
     // color: $color-primary;
-    border: 1px solid #ddd;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     
-    &__left-section {
-      margin-left: 2rem;
+    &__left-section,
+    &__middle-section,
+    &__right-section {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
+
+    &__left-section {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    &__right-section {
+      margin-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+  }
+
+  #id_notes {
+    
+    height: 11rem;
+  }
+  .text-area-full {
+    min-width: 100%;
+    max-width: 100%;
   }
 </style>

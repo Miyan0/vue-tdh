@@ -17,9 +17,14 @@ html {
 body {
     box-sizing: border-box;
     color: $color-black;
+    background-color: $color-background;
 }
 
 ::selection {
     background-color: $color-primary;
     color: $color-white;
+}
+
+::placeholder {
+    color: $color-grey-light-3;
 }

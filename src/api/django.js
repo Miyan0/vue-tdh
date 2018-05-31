@@ -28,7 +28,6 @@ const login = async (username, password) => {
 export default {
   login,
   get(url, token) {
-    console.log('token :', token)
     return axios.get(url, {
       headers: {
         Authorization: `Token ${token}`

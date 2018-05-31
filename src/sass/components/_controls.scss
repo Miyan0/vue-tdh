@@ -1,9 +1,19 @@
 .form-group {
+  margin-bottom: .5rem;
   label {
     font-size: 1.2rem;
     font-family: inherit;
     color: $color-form-label;
+    padding-bottom: .5rem;
+
   }
+}
+
+.form-label {
+  font-size: 1.2rem;
+  // font-family: inherit;
+  color: $color-form-label;
+  padding-bottom: .5rem;
 }
 
 .form-row {
@@ -15,8 +25,8 @@
 
 .form-control {
   outline: none;
-  background-color: transparent;
-  border: 1px solid #E3E3E3;
+  background-color: $color-bg-form-input;
+  border: none;
   color: inherit;  
   border-radius: 0.5rem;
   line-height: normal;
@@ -25,16 +35,26 @@
   font-size: 1.2rem;
   font-family: inherit;
   padding: 1rem 1.8rem;
+  margin-right: 1rem;
   height: 4rem;
 
   &:focus {
-    border-color: $color-primary;
+    border-color: $color-accent;
+    color: $color-white;
+  }
+
+  &__medium {
+    width: 12rem;
+  }
+
+  &__small {
+    width: 6rem;
   }
 }
 
 .select {
   // appearance: none;
-  font-size: 1.2rem;
+  // font-size: 1.2rem;
   height: 4rem;
   // border-radius: 50%;
   

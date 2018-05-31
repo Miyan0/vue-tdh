@@ -2,7 +2,7 @@
   <div class="paginator">
     <button class="btn" @click="prevPage" :disabled="!hasPrev">Prev</button>
       {{pageNumber}} / {{pageCount}}
-    <button class="btn" @click="nextPage" :disabled="!hasNext">Next</button>
+    <button class="btn btn-default" @click="nextPage" :disabled="!hasNext">Next</button>
   </div>
 </template>
 

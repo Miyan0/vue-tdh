@@ -1,7 +1,8 @@
 <template>
   <div class="list-rapport">
-    <!-- <button class="btn" @click="addRapport">Nouveau rapport</button>     -->
-    <button class="btn" @click="loadRecords">Fetch Rapports</button>    
+    <div class="list-header">
+      <button class="btn btn-block btn-default" @click="loadRecords">Fetch Rapports</button>    
+    </div>
     <ul >
         <rapport-list-item 
           v-for="rapport in allRapports"
@@ -34,8 +35,8 @@ export default {
     ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
     loadRecords() {
       this.fetchRapports({
-        limit: 10,
-        no_lot: 253
+        limit: 20,
+        no_lot__gte: 256
         // no_cause__iexact: '83417302333'
       })
     }
@@ -46,9 +47,8 @@ export default {
 <style scoped lang="scss">
   .list-rapport {
       min-width: 30%;
-      .btn {
+      .list-header {
         margin-bottom: 1rem;
-        min-width: 100%;
       }
   }
 </style>

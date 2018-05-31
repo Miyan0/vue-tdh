@@ -1,22 +1,84 @@
 .btn {
-  font-size: 1.6rem;
-  padding: 1rem;
+  display: inline-block;
+  font-size: 1.4rem;
+  padding: 0.8rem 1.4rem;
   background-color: transparent;
-  border-radius: .5rem;
-  // border-color: $color-primary;
-  border: 1px solid $color-primary;
+  line-height: 1.5rem;
+  border-radius: .3rem;
+  border: 1px solid $color-default;
   cursor: pointer;
   outline: none;
+  color: $color-font;
+  text-decoration: none; // when use as link
+
+  &:hover {
+    color: $color-white;
+  }
 
   &:disabled {
-    border: 1px solid $color-grey-light-3;
+    background-color: #3d404c;
+    color: darken($color-font, 8%);
     cursor: not-allowed;
   }
+
+  &-block {
+    width: 100%
+  }
+
+  &-default {
+    border-color: $color-default;
+
+    &:hover {
+      background-color: rgba($color-default, 0.1);
+    }
+  }
+
+  &-accent {
+    border-color: $color-accent;
+
+    &:hover {
+      background-color: rgba($color-accent, 0.1);
+    }
+  }
+
+  &-primary {
+    border-color: $color-primary;
+
+    &:hover {
+      background-color: rgba($color-primary, 0.1);
+    }
+  }
   
+  &-success {
+    border-color: $color-success;
+
+    &:hover {
+      background-color: rgba($color-success, 0.1);
+    }
+  }
+
+  &-info {
+    border-color: $color-info;
+
+    &:hover {
+      background-color: rgba($color-info, 0.1);
+    }
+  }
+
+  &-warning {
+    border-color: $color-warning;
+
+    &:hover {
+      background-color: rgba($color-warning, 0.1);
+    }
+  }
+
+  &-danger {
+    border-color: $color-danger;
+
+    &:hover {
+      background-color: rgba($color-danger, 0.1);
+    }
+  }
 }
 
-button {
-  // border-radius: none;
-  // border-width: 1;
-  // border-style: none;
-}

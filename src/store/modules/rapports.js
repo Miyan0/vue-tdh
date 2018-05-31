@@ -1,15 +1,11 @@
 import api from '../../api/django'
 import qs from 'qs'
 import Vue from 'vue'
+import { RAPPORTS_URL } from './constants'
+import { handleError } from './helpers'
 
-const DOMAIN = 'http://localhost:8000'
-const RAPPORTS_URL = `${DOMAIN}/api/rapports/`
 
-const handleError = (error, methodName) => {
-  //TODO: we should display an error page (500 or 404)
-  const msg = `ERROR: ${methodName}`
-  console.error(msg, error.response.status) // eslint-disable-line no-console
-}
+
 
 const buildProcedureTypes = () => {
   return [
@@ -54,7 +50,6 @@ const gotoPage = async (commit, rootState, pageType) => {
     return
   }
   const { token } = rootState.auth
-  console.log('url :', url)
   try {
     const { data } = await api.get(url, token)
     commit('updateRapports', data)
