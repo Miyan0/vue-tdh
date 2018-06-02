@@ -85,14 +85,32 @@ body {
   font-weight: 700;
 }
 
-.txt-white {
+.txt-white,
+.color-white {
   color: $color-white;
 }
 
-.txt-primary {
+.txt-primary,
+.color-primary {
   color: $color-primary;
 }
 
-.txt-info {
+.txt-info,
+.color-info {
   color: $color-info;
+}
+
+.txt-success,
+.color-success {
+  color: $color-success;
+}
+
+.txt-danger,
+.color-danger {
+  color: $color-danger;
+}
+
+.txt-warning,
+.color-warning {
+  color: $color-warning;
 }

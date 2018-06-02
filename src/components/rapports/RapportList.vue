@@ -35,7 +35,7 @@ export default {
     ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
     loadRecords() {
       this.fetchRapports({
-        limit: 20,
+        limit: 15,
         no_lot__gte: 256
         // no_cause__iexact: '83417302333'
       })

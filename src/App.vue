@@ -2,18 +2,19 @@
   <div id="app">
     <div>
         <app-header></app-header>
-      </div>
-    <main>
+    </div>
+    <main v-if="isAuthenticated">
       <router-view></router-view>
     </main>
-    
-    
-
+    <div v-else>
+      <Login />
+    </div>
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader'
+import Login from '@/components/Login'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -21,6 +22,7 @@ export default {
   
   components: {
     AppHeader,
+    Login
   },
   computed: mapGetters(['isAuthenticated']),
   methods: {

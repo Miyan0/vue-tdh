@@ -10,9 +10,8 @@
     color: inherit;  
     border-radius: 0.5rem;
     line-height: normal;
-    padding: 1rem 1.8rem;
+    padding: $form-control-pd;
     height: 4rem;
-    font-size: 1.2rem;
     display: flex;
     justify-content: space-evenly;
     
@@ -22,9 +21,10 @@
 
   &__label {
     color: $color-white;
-    font-size: 1.2rem;
+    font-size: $form-control-font-size;
     display: block;
   }
+
   &__no,
   &__rue,
   &__apt {
@@ -32,13 +32,11 @@
     color: $color-font;
     border: none;
     outline: none;
-    
+    font-size: $form-control-font-size;
   }
 
   &__no {
     width: 25%;
-    
-
   }
 
   &__rue {
@@ -48,6 +46,4 @@
   &__apt {
     width: 20%;
   }
-
-
 }

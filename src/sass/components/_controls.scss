@@ -1,7 +1,7 @@
 .form-group {
   margin-bottom: .5rem;
   label {
-    font-size: 1.2rem;
+    font-size: $form-control-font-size;
     font-family: inherit;
     color: $color-form-label;
     padding-bottom: .5rem;
@@ -32,9 +32,9 @@
   line-height: normal;
   display: block;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: $form-control-font-size;
   font-family: inherit;
-  padding: 1rem 1.8rem;
+  padding: $form-control-pd;
   margin-right: 1rem;
   height: 4rem;
 

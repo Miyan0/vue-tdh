@@ -1,6 +1,6 @@
 <template>
 
-    <li @click="selectRapport(rapport)" :class="{selected: isSelected}">
+    <li @click="selectItem(rapport)" :class="{selected: isSelected}">
       <div class="rapport-item-left">
         Lot: {{ rapport.no_lot}}
         <br>
@@ -26,6 +26,10 @@ export default {
   props: ['rapport'],
   methods: {
     ...mapActions(['selectRapport']),
+    selectItem(rapport) {
+      this.selectRapport(rapport)
+      this.$emit('selected_rapport_changed')
+    }
   },
   computed: {
     ...mapGetters(['selectedRapport', 'procedureTypes']),

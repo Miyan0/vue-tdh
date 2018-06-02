@@ -192,6 +192,38 @@ const mutations = {
     state.selectedRapport.audition_date = value
   },
 
+  updateDemarche: (state, value) => {
+    state.selectedRapport.demarche_date = value
+  },
+
+  updateNoCivique: (state, value) => {
+    state.selectedRapport.no_civique = value
+  },
+
+  updateRue: (state, value) => {
+    state.selectedRapport.rue = value
+  },
+
+  updateApt: (state, value) => {
+    state.selectedRapport.apt = value
+  },
+
+  updateVille: (state, value) => {
+    state.selectedRapport.ville = value
+  },
+
+  updateKm: (state, value) => {
+    state.selectedRapport.km = value
+  },
+
+  updateSecteur: (state, value) => {
+    state.selectedRapport.secteur = value
+  },
+
+  updateNotes: (state, value) => {
+    state.selectedRapport.notes = value
+  },
+
   revertFormChanges: (state) => {
     // annule les changements dans le formulaire d'edition d'un rapport
 
