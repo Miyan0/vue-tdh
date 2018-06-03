@@ -9,21 +9,17 @@ import { DATE_FORMAT } from '@/app_constants'
 
 const findDateSeparator = dateStr => {
   
-  let separator = '/'
-  if (dateStr.indexOf(separator)) {
-    return separator
+  if (dateStr.indexOf('/') !== -1) {
+    return '/'
   }
-  separator = '-'
-  if (dateStr.indexOf(separator)) {
-    return separator
+  if (dateStr.indexOf('-') !== -1) {
+    return '-'
   }
-  separator = '.'
-  if (dateStr.indexOf(separator)) {
-    return separator
+  if (dateStr.indexOf('.') !== -1) {
+    return '.'
   }
-  separator = ' '
-  if (dateStr.indexOf(separator)) {
-    return separator
+  if (dateStr.indexOf(' ') !== -1) {
+    return ' '
   }
   return null
 }
@@ -166,7 +162,7 @@ const handleDateTenChars = dateStr => {
   // - 2018-02-28 -> 2018-02-28
   let year, month, day
   const separator = findDateSeparator(dateStr)
-
+  
   const date = moment()
   if (separator == null) {
     return date.format(DATE_FORMAT)

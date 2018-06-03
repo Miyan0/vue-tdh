@@ -258,6 +258,7 @@ describe('date string conversions (10 chars)', () => {
     const result = '2018-02-28'
     expect(partialStrToDate(dateStr)).toEqual(result)
   }),
+  
   it('handle "-" separator', () => {
     const dateStr = '28-02-2018'
     const result = '2018-02-28'
@@ -315,3 +316,4 @@ describe('date string conversions (10 chars)', () => {
   })
 
 })
+
