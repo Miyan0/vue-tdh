@@ -191,6 +191,14 @@ const _handleDateTenChars = dateStr => {
 }
 
 
+//-----------------------------------------------------------------------------
+// Public functions
+//-----------------------------------------------------------------------------
+
+export const isFutureDate = aDate => moment(aDate).isAfter(moment(), 'day')
+
+export const isValidDate = aDate => !isNaN(Date.parse(aDate))
+
 
 //-----------------------------------------------------------------------------
 // function: partialStrToDate

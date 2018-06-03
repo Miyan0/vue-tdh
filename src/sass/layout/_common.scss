@@ -1,0 +1,37 @@
+$pd-sm: .5rem;
+$mg-sm: $pd-sm;
+
+// paddings
+.pd-sm-t {
+  padding-top: $pd-sm;
+}
+
+.pd-sm-r {
+  padding-right: $pd-sm;
+}
+
+.pd-sm-b {
+  padding-bottom: $pd-sm;
+}
+
+.pd-sm-l {
+  padding-left: $pd-sm;
+}
+
+
+// margins
+.mg-sm-t {
+  margin-top: $mg-sm;
+}
+
+.mg-sm-r {
+  margin-right: $mg-sm;
+}
+
+.mg-sm-b {
+  margin-bottom: $mg-sm;
+}
+
+.mg-sm-l {
+  margin-left: $mg-sm;
+}

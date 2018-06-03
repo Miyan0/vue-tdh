@@ -33,8 +33,16 @@
       data-value-missing="Ce champs est obligatoire"
   >
   </div>
-  <div v-if="dateInvalid" class="error">
+  <div v-if="dateInvalid">
     <p>La date n'est pas valide</p>
+  </div>
+  <div v-if="futureDate" class="mg-sm-l">
+    <p class="color-warning pd-sm-t">
+      <i class="fas fa-exclamation-triangle txt-lg pd-sm-r"></i>
+      <span class="txt-sm">
+        Démarche future ?
+      </span>
+    </p>
   </div>
 </div>
 
@@ -42,19 +50,22 @@
 
 <script>
 import moment from 'moment'
-import { partialStrToDate } from '@/utils/dateutils'
+import { partialStrToDate, isFutureDate, isValidDate } from '@/utils/dateutils'
+import { partialStrToTime } from '@/utils/timeutils'
 
 // constants
 import { DATE_FORMAT, TIME_FORMAT } from '@/app_constants'
 
 // module functions
-const isValidDate = aDate => !isNaN(Date.parse(aDate))
+
+
 
 // VueJs stuff
 export default {
   data() {
     return {
       dateInvalid: false,
+      futureDate: false,
       currentDate: null,
       currentTime: null
     }
@@ -137,6 +148,7 @@ export default {
       
     },
     onDateChanged(event) {
+      this.futureDate = false
       const value = partialStrToDate(event.target.value)
       event.target.value = value
       // console.log('value :', value)
@@ -147,38 +159,41 @@ export default {
         this.dateInValid = false
 
         const time = this.$refs.time_input.value
-        console.log('time :', time)
         const newDate = this.buildDate(value, time)
         this.$store.commit('updateDemarche', newDate)
+        this.futureDate = isFutureDate(newDate)
       }
     },
     onTimeInput(event) {
       // handle + and - chars
       const char = event.data
-      console.log('char :', char)
       let currentDateTime
       switch (char) {
       case '+':
         currentDateTime = this.buildDate(this.currentDate, this.currentTime)
         event.target.value = moment(currentDateTime).add(1, 'minutes').format(TIME_FORMAT)
         this.currentTime = event.target.value
+        this.$refs.time_input.select()
         break
       case '-':
         currentDateTime = this.buildDate(this.currentDate, this.currentTime)
         event.target.value = moment(currentDateTime).subtract(1, 'minutes').format(TIME_FORMAT)
         this.currentTime = event.target.value
+        this.$refs.time_input.select()
         break
       default:
         break
       }
-      this.$refs.time_input.select()
+      
     },
     onTimeChanged(event) {
-    // parse and format time value as HH:mm
-      const value = event.target.value
-      console.log('event.target.value :', value)
+      // parse and format time value as HH:mm
+      const time = partialStrToTime(event.target.value)
+      event.target.value = time
 
-
+      const date = this.$refs.date_input.value
+      const newDate = this.buildDate(date, time)
+      this.$store.commit('updateDemarche', newDate)
     }
   }
 }
@@ -198,5 +213,6 @@ export default {
   .time-part {
     width: 7rem;
   }
+
 </style>
 
