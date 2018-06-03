@@ -44,8 +44,7 @@
 import moment from 'moment'
 
 // constants
-const DATE_FORMAT = 'YYYY-MM-DD'
-const TIME_FORMAT = 'HH:mm'
+import { DATE_FORMAT, TIME_FORMAT } from '@/app_constants'
 
 // module functions
 const isValidDate = aDate => !isNaN(Date.parse(aDate))
@@ -143,6 +142,7 @@ export default {
       }
     },
     onTimeInput(event) {
+      // handle + and - chars
       const char = event.data
       console.log('char :', char)
       let currentDateTime
@@ -163,7 +163,11 @@ export default {
       this.$refs.time_input.select()
     },
     onTimeChanged(event) {
-      console.log('event.target.value :', event.target.value)
+    // parse and format time value as HH:mm
+      const value = event.target.value
+      console.log('event.target.value :', value)
+
+
     }
   }
 }
