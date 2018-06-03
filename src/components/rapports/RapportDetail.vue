@@ -256,7 +256,7 @@ export default {
   
  
   beforeUpdate() {
-    console.log('beforeUpdate()')
+    // console.log('beforeUpdate()')
     this.beforeUpdateCalled = true
     this.initState()
     this.showAuditionDate = hasAuditionDate(this.selectedRapport.procedure_type)

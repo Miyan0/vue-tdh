@@ -7,7 +7,7 @@ import { DATE_FORMAT } from '@/app_constants'
 // private functions
 //-----------------------------------------------------------------------------
 
-const findDateSeparator = dateStr => {
+const _findDateSeparator = dateStr => {
   
   if (dateStr.indexOf('/') !== -1) {
     return '/'
@@ -24,7 +24,7 @@ const findDateSeparator = dateStr => {
   return null
 }
 
-const handleDateOneChar = dateStr => {
+const _handleDateOneChar = dateStr => {
   // - 2 -> 2018-06-02
 
   const date = moment()
@@ -37,7 +37,7 @@ const handleDateOneChar = dateStr => {
 }
 
 
-const handleDateTwoChars = dateStr => {
+const _handleDateTwoChars = dateStr => {
   // - 28 -> 2018-06-28
   // - 32 -> 2018-02-03
 
@@ -73,7 +73,7 @@ const handleDateTwoChars = dateStr => {
 
 
 
-const handleDateThreeChars = dateStr => {
+const _handleDateThreeChars = dateStr => {
   // - 282 -> 2018-02-28
   const date = moment()
   // const defaultDate = date.format(DATE_FORMAT)
@@ -93,7 +93,7 @@ const handleDateThreeChars = dateStr => {
 
 
 
-const handleDateFourChars = dateStr => {
+const _handleDateFourChars = dateStr => {
   // - 2802 -> 2018-02-28
 
   const date = moment()
@@ -113,7 +113,7 @@ const handleDateFourChars = dateStr => {
 
 
 
-const handleDateSixChars = dateStr => {
+const _handleDateSixChars = dateStr => {
   // - 280201 -> 2001-02-28
   // note, this will always return years in 21th century
   // if you need to have a 20th century date, pass the full year (19051957)
@@ -135,7 +135,7 @@ const handleDateSixChars = dateStr => {
 }
 
 
-const handleDateEightChars = dateStr => {
+const _handleDateEightChars = dateStr => {
   // - 28022001 -> 2001-022-28
   // note, this will always return years in 21th century
 
@@ -157,11 +157,11 @@ const handleDateEightChars = dateStr => {
 
 
 
-const handleDateTenChars = dateStr => {
+const _handleDateTenChars = dateStr => {
   // - 28-02-2018, 28.02.2018, 28/02/2018, 28 02 2018 -> 2018-02-28
   // - 2018-02-28 -> 2018-02-28
   let year, month, day
-  const separator = findDateSeparator(dateStr)
+  const separator = _findDateSeparator(dateStr)
   
   const date = moment()
   if (separator == null) {
@@ -230,17 +230,17 @@ export const partialStrToDate = dateStr => {
     result = moment().format(DATE_FORMAT)
     break
   case 1:
-    result = handleDateOneChar(dateStr)
+    result = _handleDateOneChar(dateStr)
     break
   case 2:
-    result = handleDateTwoChars(dateStr)
+    result = _handleDateTwoChars(dateStr)
     break
   case 3:
-    result = handleDateThreeChars(dateStr)
+    result = _handleDateThreeChars(dateStr)
     break
 
   case 4:
-    result = handleDateFourChars(dateStr)
+    result = _handleDateFourChars(dateStr)
     break
   
   case 5:
@@ -250,15 +250,15 @@ export const partialStrToDate = dateStr => {
     break
 
   case 6:
-    result = handleDateSixChars(dateStr)
+    result = _handleDateSixChars(dateStr)
     break
   
   case 8:
-    result = handleDateEightChars(dateStr)
+    result = _handleDateEightChars(dateStr)
     break
 
   case 10:
-    result = handleDateTenChars(dateStr)
+    result = _handleDateTenChars(dateStr)
     break
 
   default:

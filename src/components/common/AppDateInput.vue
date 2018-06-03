@@ -42,6 +42,7 @@
 
 <script>
 import moment from 'moment'
+import { partialStrToDate } from '@/utils/dateutils'
 
 // constants
 import { DATE_FORMAT, TIME_FORMAT } from '@/app_constants'
@@ -107,34 +108,44 @@ export default {
       this.currentTime = input.value
     },
     onDateInput(event) {
+      // we do not modify the selectedRapport here, it'll be done in the 'change' event.
       const char = event.data
-      console.log('event :', event)
+      // console.log('event :', event)
       switch (char) {
       case 't':
         event.target.value = moment().format(DATE_FORMAT)
         this.currentDate = event.target.value
+        this.$refs.date_input.select()
         break
+
       case '+':
         event.target.value = moment(this.currentDate).add(1, 'days').format(DATE_FORMAT)
         this.currentDate = event.target.value
+        this.$refs.date_input.select()
         break
+
       case '-':
         event.target.value = moment(this.currentDate).subtract(1, 'days').format(DATE_FORMAT)
         this.currentDate = event.target.value
+        this.$refs.date_input.select()
         break
+
       default:
+        // all other chars are passed through
         break
       }
-      this.$refs.date_input.select()
-      console.log('data :', event.data)
+      
     },
     onDateChanged(event) {
-      const value = event.target.value
+      const value = partialStrToDate(event.target.value)
+      event.target.value = value
+      // console.log('value :', value)
+
       if (!isValidDate(value)) {
         this.dateInValid = true
       } else {
-        console.log('event :', value)
         this.dateInValid = false
+
         const time = this.$refs.time_input.value
         console.log('time :', time)
         const newDate = this.buildDate(value, time)
