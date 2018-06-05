@@ -65,7 +65,6 @@
                 @change="onInputChanged"
                 @blur="onNoCauseBlur"
                 :value="noCause"
-                
                 required
             >
           </div>
@@ -131,7 +130,6 @@
                     name="apt"
                     :value="selectedRapport.apt"
                     @change="onInputChanged"
-                    required
                     autocomplete="address-line1"
                 >
               </div>            
