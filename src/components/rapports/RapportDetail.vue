@@ -104,6 +104,7 @@
                     placeholder="no civique"
                     id="id_no_civique"
                     name="nocivique"
+                    ref="noCivique"
                     :value="selectedRapport.no_civique"
                     @change="onInputChanged"
                     required
@@ -116,6 +117,7 @@
                     placeholder="rue"
                     id="id_rue"
                     name="rue"
+                    ref="rue"
                     :value="selectedRapport.rue"
                     @change="onInputChanged"
                     required
@@ -236,40 +238,16 @@ export default {
       isNewRecord: false,
       isDirty: false,
       beforeUpdateCalled: false,
+      theRapport: null
     }
   },
   
-  // beforeCreate() {
-  //   console.log('beforeCreate()')
-  // },
-  // created() {
-  //   console.log('created()')
-  // },
-  // beforeMount() {
-  //   console.log('beforeMount()')
-  // },
-  // mounted() {
-  //   console.log('mounted()')
-  // },
-  
- 
   beforeUpdate() {
     // console.log('beforeUpdate()')
     this.beforeUpdateCalled = true
     this.initState()
     this.showAuditionDate = hasAuditionDate(this.selectedRapport.procedure_type)
   },
-  // updated() {
-  //   console.log('updated()')
-  //   // this.$refs.nocause.focus()
-  // },
-
-  // activated() {
-  //   console.log('activated()')
-  // },
-  // deactivated() {
-  //   console.log('deactivated()')
-  // },
 
   computed: {
     ...mapGetters([
@@ -278,6 +256,7 @@ export default {
       'rapportTypes',
       'rapportTypeStr',
       'procedureTypeStr',
+      'getRues'
     ]),
 
     demarcheDate() {
@@ -349,6 +328,11 @@ export default {
       this.$store.commit('updateDemarche', newDate)
     },
 
+    loadRues(noCivique, rue) {
+      const result = this.$store.getters.getRues(noCivique, rue)
+      console.log('result :', result)
+    },
+
     onNoCauseFocus(event) {
       // remove '-'
       const val = event.target.value
@@ -394,7 +378,8 @@ export default {
         break
 
       case 'rue':
-        this.$store.commit('updateRue', value)
+        this.loadRues(this.$refs.noCivique.value, this.$refs.rue.value)
+        // this.$store.commit('updateRue', value)
         break
       
       case 'apt':
