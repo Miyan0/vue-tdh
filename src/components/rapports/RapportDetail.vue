@@ -344,13 +344,7 @@ export default {
         this.$store.commit('updateNoCause', helpers.formatNoCause(value))
         break
 
-      case 'demarche-date':
-        // this.updateDemarcheDate(event)
-        break
-
-      case 'demarche-time':
-        this.updateDemarcheTime(event)
-        break
+      // demarche date and time are updated in the AppDateInput component
       
       case 'nocivique':
         this.$store.commit('updateNoCivique', value)
@@ -478,9 +472,19 @@ export default {
         return
       }
       if (result.length === 1) {
-        this.$store.commit('updateRue', result[0].name)
-        this.$store.commit('updateKm', result[0].km)
-        this.$store.commit('updateSecteur', result[0].secteur)
+        const rue = result[0]
+        console.log('rue.name :', rue.name)
+        this.$store.commit('updateRue', rue.name)
+        this.$store.commit('updateKm', rue.km)
+        this.$store.commit('updateSecteur', rue.secteur)
+        // sometimes the UI doesn't update;
+        // for example, if the selectedRecord.rue is 'Charlemagne' and
+        // we searched using 'c' 
+        if (this.$refs.rue !== rue.name) {
+          console.log('force update')
+          this.$forceUpdate()
+          // Vue.set(this.selectedRapport, 'rue', rue.name)
+        }
       } else {
         this.pickerRues = result
         this.$modal.show('street-picker')

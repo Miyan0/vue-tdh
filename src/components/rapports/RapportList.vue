@@ -30,13 +30,16 @@ export default {
   computed: {
     ...mapGetters(['allRapports', 'hasNext', 'hasPrev', 'pageNumber', 'pageCount'])
   },
+  created() {
+    this.loadRecords()
+  },
 
   methods: {
     ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
     loadRecords() {
       this.fetchRapports({
-        limit: 15,
-        no_lot__gte: 256
+        limit: 10,
+        no_lot__gte: 258
         // no_cause__iexact: '83417302333'
       })
     }

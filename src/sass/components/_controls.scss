@@ -43,6 +43,11 @@
     color: $color-white;
   }
 
+  &:disabled {
+    background-color: $color-bg-disabled;
+    cursor: not-allowed;
+  }
+
   &__medium {
     width: 12rem;
   }

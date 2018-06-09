@@ -15,6 +15,7 @@ $color-success: #1bbf89;
 $color-default: #616779;
 $color-accent: $color-theme;
 
+$color-bg-disabled: #2c2e34;
 
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
@@ -47,6 +48,8 @@ $color-background-hover: #494b54;
 // $color-placeholder: darken($color-font, 14%);
 
 $navigation-width: 200px;
+$color-navigation: darken($color-background, 2%);
+
 
 $form-control-pd: 1rem 1.4rem;
 $form-control-font-size: 1.2rem;

@@ -1,7 +1,14 @@
 <template>
 <div>
-
-  <h1 @click="toggleShow">Dashboard</h1>
+  <content-header
+    :icon=icon
+    title="Dashboard"
+    infos="Page d'acceuil. Affiche les statistiques et autres informations générales."
+    top="Statisiques"
+    middle="Payes"
+    bottom="Autres"
+  ></content-header>
+  <h1 @click="toggleShow">Trying VueJs transitions!</h1>
   <transition name="menu-popover">
     <ul class="MenuPopover" v-if="show">
       <li>Payments</li>
@@ -13,10 +20,16 @@
 </template>
 
 <script>
+import ContentHeader from '@/components/layout/ContentHeader'
+import { DASHBOARD_ICON } from '@/app_constants'
 export default {
+  components: {
+    ContentHeader
+  },
   data() {
     return {
-      show: false
+      show: false,
+      icon: DASHBOARD_ICON
     }
   },
   methods: {
@@ -27,12 +40,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 
   .MenuPopover {
-    background-color: #ccc;
+    background-color: black;
     max-width: 50%;
     margin: 0 auto;
+    border: 1px solid #444;
+
+    li {
+      list-style: none;
+      padding: 1rem;
+    }
   }
   .menu-popover-enter,
   .menu-popover-leave-to {

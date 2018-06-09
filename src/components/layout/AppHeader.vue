@@ -31,13 +31,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import "../sass/abstracts/_variables";
+  @import "../../sass/abstracts/_variables";
 
   .navbar {
     display: flex;
     justify-content: space-between;
     // padding: 1.5rem;
-    border: 1px solid #ddd;
+    // border: 1px solid #ddd;
     // margin-bottom: 1rem;
     height: 6rem;
     background-color: $color-white;

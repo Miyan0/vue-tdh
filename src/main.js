@@ -14,7 +14,10 @@ import Rapports from './components/rapports/Rapports'
 import './sass/main.scss'
 
 Vue.use(VueRouter)
-Vue.use(VModal)
+Vue.use(VModal, {
+  dynamic: true,
+  dialog: true
+})
 
 export const router = new VueRouter({
   mode: 'history',
