@@ -18,6 +18,10 @@ body {
     box-sizing: border-box;
     color: $color-black;
     background-color: $color-background;
+
+    &.modal-open {
+        overflow: hidden;
+    }
 }
 
 ::selection {
@@ -27,4 +31,10 @@ body {
 
 ::placeholder {
     color: $color-grey-light-3;
+}
+
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }

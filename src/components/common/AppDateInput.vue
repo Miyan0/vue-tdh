@@ -89,8 +89,7 @@ export default {
     inputTimeClass: String,
     inputTimeId: String,
     inputTimeName: String,
-    required: String,
-    callback: Function
+    required: String
   },
   methods: {
     buildDate(datePart, timePart) {
@@ -106,14 +105,8 @@ export default {
       input.select()
       this.currentDate = input.value
     },
+
     onTimeFocus() {
-      // let time = moment(this.currentDate)
-      // console.log('typeof(time) :', typeof(time))
-      // const parts = this.$refs.time_input.value.split(':')
-      // console.log('parts :', parts)
-      // time.hour(parts[0])
-      // time.minutes(parts[1])
-      // this.currentTime = time.format(TIME_FORMAT)
       const input = this.$refs.time_input
       input.select()
       this.currentTime = input.value

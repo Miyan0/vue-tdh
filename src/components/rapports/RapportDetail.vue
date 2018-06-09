@@ -88,10 +88,9 @@
                 inputDateName="demarche-date"
                 :inputDateValue="selectedRapport.demarche_date"
                 inputTimeClass="form-control"
-                inputTimeId="id_demarche_date"
+                inputTimeId="id_demarche_time"
                 inputTimeName="demarche-date"
                 required="true"
-                :callback="handleDemarcheChanges"
               ></app-date-input>
           </div>
           <div class="form-row">
@@ -136,6 +135,14 @@
                 >
               </div>            
             </div>
+          </div>
+          <div v-if="invalidStreet" class="mg-sm-l">
+            <p class="color-warning pd-sm-t">
+              <i class="fas fa-exclamation-triangle txt-lg pd-sm-r"></i>
+              <span class="txt-sm">
+                Rue introuvable!
+              </span>
+            </p>
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -208,7 +215,20 @@
       
     </form>
     <div class="detail__footer">
-      <h1>footer</h1>
+      <h2>Footer</h2>
+      <!-- <modal name="street-picker">
+        <h3>Hello</h3>
+        <ul class="list">
+        <li v-for="rue in pickerRues" :key="rue.id" @click=onSelectStreet(rue)>{{rue.name}} - ({{rue.secteur}})</li>
+      </ul>
+      </modal> -->
+      <street-picker 
+        :rues=pickerRues 
+        :pick=handlePickRue 
+        :cancel=handleCancelPickRue
+        title="Pick a rue"
+      >
+      </street-picker>
     </div>
   </div>
   
@@ -219,6 +239,7 @@ import {mapGetters} from 'vuex'
 import moment from 'moment'
 import helpers from './helpers'
 import AppDateInput from '@/components/common/AppDateInput'
+import StreetPicker from '@/components/common/StreetPicker'
 
 const hasAuditionDate = (procType) => {
   // procedure types which needs an audtion date (ex subpoena)
@@ -230,15 +251,19 @@ const hasAuditionDate = (procType) => {
 export default {
   name: 'RapportDetail',
   components: {
-    AppDateInput
+    AppDateInput,
+    StreetPicker
   },
   data() {
     return {
+      invalidStreet: false,
       showAuditionDate: this.hasAuditionDate,
       isNewRecord: false,
       isDirty: false,
       beforeUpdateCalled: false,
-      theRapport: null
+      theRapport: null,
+      showPicker: false,
+      pickerRues: []
     }
   },
   
@@ -285,59 +310,13 @@ export default {
       this.isNewRecord = false
       this.isDirty = false
     },
-    updateDemarcheDate(event) {
-      // the date part has changed (YYYY-MM-DD)
-      // we need to keep the time value and update the date part of the state
-      if (isNaN(Date.parse(event.target.value))) {
-        alert('Date invalide')
-        event.target.value = moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
-        return
-      }
-
-      let newDate = new Date(event.target.value)
-      const demarcheDate = new Date(this.selectedRapport.demarche_date)
-      newDate.setHours(demarcheDate.getHours())
-      newDate.setMinutes(demarcheDate.getMinutes())
-      newDate.setSeconds(demarcheDate.getSeconds())
-      newDate.setMilliseconds(demarcheDate.getMilliseconds())
-      console.log('newDate :', newDate)
-      this.$store.commit('updateDemarche', newDate)
-    },
-
-    updateDemarcheTime(event) {
-      // the time part has changed (HH:mm)
-      // we need to keep the date value and update the time part of the state
-      const parts = event.target.value.split(':')
-      if (parts == null || parts.length < 2) {
-        alert('Heure invalide')
-        event.target.value = moment(this.selectedRapport.demarche_date).format('HH:mm')
-        return
-      }
-
-      const hours = parseInt(parts[0])
-      const minutes = parseInt(parts[1])
-      if (!(0 <= hours <= 24 && 0 <= minutes <= 60)) {
-        alert('Heure invalide')
-        event.target.value = moment(this.selectedRapport.demarche_date).format('HH:mm')
-        return
-      }
-      let newDate = new Date(this.selectedRapport.demarche_date)
-      newDate.setHours(hours)
-      newDate.setMinutes(minutes)
-      console.log('newDate :', newDate)
-      this.$store.commit('updateDemarche', newDate)
-    },
-
-    loadRues(noCivique, rue) {
-      const result = this.$store.getters.getRues(noCivique, rue)
-      console.log('result :', result)
-    },
-
+    
     onNoCauseFocus(event) {
       // remove '-'
       const val = event.target.value
       event.target.value = helpers.unformatNoCause(val)
     },
+
     onNoCauseBlur(event) {
       event.target.value = helpers.formatNoCause(event.target.value)
     },
@@ -378,8 +357,7 @@ export default {
         break
 
       case 'rue':
-        this.loadRues(this.$refs.noCivique.value, this.$refs.rue.value)
-        // this.$store.commit('updateRue', value)
+        this.handleRueChanged()
         break
       
       case 'apt':
@@ -409,27 +387,122 @@ export default {
       }
     },
 
-    handleDemarcheChanges(result) {
-      console.log('result :', result)
+    
+
+    //-------------------------------------------------------------------------
+    // Misc buttons handling
+    //-------------------------------------------------------------------------
+
+    onRevert() {  // cancel button
+      this.$store.commit('revertFormChanges', this.selectedRapport)
     },
 
-    onRevert() {
-      this.$store.commit('revertFormChanges', this.selectedRapport)
-      // const form = this.$refs.form
-      // form.reset()
-    },
-    onSave() {
+    onSave() {  // save button
       this.$store.commit('saveFormChanges', this.selectedRapport)
     },
 
-    onValidate() {
+    onValidate() { // validate button
       // test method to check validations
       const form = this.$refs.form
-      console.log('ref :', form)
+      // console.log('ref :', form)
       form.reportValidity()
-      // const valid = form.checkValidity()
-    }
+    },
 
+
+
+    //-------------------------------------------------------------------------
+    // Demarche date/time handling
+    //-------------------------------------------------------------------------
+
+    updateDemarcheDate(event) {
+      // the date part has changed (YYYY-MM-DD)
+      // we need to keep the time value and update the date part of the state
+      if (isNaN(Date.parse(event.target.value))) {
+        alert('Date invalide')
+        event.target.value = moment(this.selectedRapport.demarche_date).format('YYYY-MM-DD')
+        return
+      }
+
+      let newDate = new Date(event.target.value)
+      const demarcheDate = new Date(this.selectedRapport.demarche_date)
+      newDate.setHours(demarcheDate.getHours())
+      newDate.setMinutes(demarcheDate.getMinutes())
+      newDate.setSeconds(demarcheDate.getSeconds())
+      newDate.setMilliseconds(demarcheDate.getMilliseconds())
+      // console.log('newDate :', newDate)
+      this.$store.commit('updateDemarche', newDate)
+    },
+
+    updateDemarcheTime(event) {
+      // the time part has changed (HH:mm)
+      // we need to keep the date value and update the time part of the state
+      const parts = event.target.value.split(':')
+      if (parts == null || parts.length < 2) {
+        alert('Heure invalide')
+        event.target.value = moment(this.selectedRapport.demarche_date).format('HH:mm')
+        return
+      }
+
+      const hours = parseInt(parts[0])
+      const minutes = parseInt(parts[1])
+      if (!(0 <= hours <= 24 && 0 <= minutes <= 60)) {
+        alert('Heure invalide')
+        event.target.value = moment(this.selectedRapport.demarche_date).format('HH:mm')
+        return
+      }
+      let newDate = new Date(this.selectedRapport.demarche_date)
+      newDate.setHours(hours)
+      newDate.setMinutes(minutes)
+      // console.log('newDate :', newDate)
+      this.$store.commit('updateDemarche', newDate)
+    },
+
+
+
+
+    //-------------------------------------------------------------------------
+    // StreetPicker handling
+    //-------------------------------------------------------------------------
+    loadRues(noCivique, rue) {
+      const result = this.$store.getters.getRues(noCivique, rue)
+      console.log('result :', result)
+      return result
+    },
+
+    handleRueChanged() {
+      this.invalidStreet = false
+      const result = this.loadRues(this.$refs.noCivique.value, this.$refs.rue.value)
+      if (result === undefined || result.length === 0) {
+        this.invalidStreet = true
+        this.$refs.rue.select()
+        return
+      }
+      if (result.length === 1) {
+        this.$store.commit('updateRue', result[0].name)
+        this.$store.commit('updateKm', result[0].km)
+        this.$store.commit('updateSecteur', result[0].secteur)
+      } else {
+        this.pickerRues = result
+        this.$modal.show('street-picker')
+      }
+    },
+
+    handlePickRue(rue) {
+      this.pickerRues = []
+      console.log('rue.name :', rue.name)
+      this.$store.commit('updateRue', rue.name)
+      this.$store.commit('updateVille', rue.ville)
+      this.$store.commit('updateKm', rue.km)
+      this.$store.commit('updateSecteur', rue.secteur)
+      this.$refs.rue.select()
+
+    },
+
+    handleCancelPickRue() {
+      this.showPicker = false
+      this.pickerRues = []
+      this.$refs.rue.select()
+    },
   }
 }
 </script>
