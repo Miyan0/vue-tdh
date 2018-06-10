@@ -123,7 +123,7 @@ const actions = {
       // make sure url contains a backslash, safari needs it before query params
       url = `${url}${query}`
     }
-    const { token } = rootState.auth
+    const { token } = rootState.profile
     try {
       const { data } = await api.get(url, token)
       commit('updateRapports', data)

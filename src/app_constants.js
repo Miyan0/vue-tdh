@@ -5,6 +5,10 @@ export const ROOT_URL = 'http://127.0.0.1:8000'
 // REST endpoints
 export const TOKEN_ENPOINT = 'api-token-auth'
 
+export const DOMAIN = 'http://localhost:8000'
+export const RAPPORTS_URL = `${DOMAIN}/api/rapports/`
+export const RUES_URL = `${DOMAIN}/api/rues/`
+
 // ICONS
 export const DASHBOARD_ICON = 'pe-7s-graph'
 export const FACTURATION_ICON = 'pe-7s-shopbag'

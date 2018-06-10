@@ -11,7 +11,11 @@ const buildHeaders = (token) => {
   return head
 }
 
-
+const handleError = (error, methodName) => {
+  //TODO: we should display an error page (500 or 404)
+  const msg = `ERROR: ${methodName}`
+  console.error(msg, error.response.status) // eslint-disable-line no-console
+}
 
 const login = async (username, password) => {
   const postdata = {
@@ -30,5 +34,6 @@ export default {
       }
     })
   },
-  buildHeaders
+  buildHeaders,
+  handleError
 }
