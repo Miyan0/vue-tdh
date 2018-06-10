@@ -21,7 +21,7 @@ const gotoPage = async (commit, rootState, pageType) => {  // move to actions
     // can happen if pageType was, for example, 'prev' and we're at the first page
     return
   }
-  const { token } = rootState.auth
+  const { token } = rootState.profile
   try {
     const { data } = await api.get(url, token)
     commit('updateRapports', data)
