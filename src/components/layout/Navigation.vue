@@ -19,7 +19,7 @@
             Payes
           </router-link>
           <li class="nav-link">
-            <a  @click="logout" href="">Logout</a>
+            <a  @click="logout" >Logout</a>
           </li>
       </ul>
       <router-link v-else to="/login">Login</router-link>
