@@ -3,7 +3,7 @@ import Vue from 'vue'
 
 // import auth from './modules/auth'
 import profile from './profile'
-import rapports from './modules/rapports'
+import rapports from './rapports'
 import rues from './rues'
 
 Vue.use(Vuex)
