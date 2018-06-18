@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="refrigerator" class="cls-1" d="M8,27a1,1,0,0,0,1,1h1v1h2V28h8v1h2V28h1a1,1,0,0,0,1-1V19H8Zm1-7h1v3H9ZM23,4H9A1,1,0,0,0,8,5V18H24V5A1,1,0,0,0,23,4ZM10,17H9V14h1Z" transform="translate(-8 -4)"/>
+</svg>

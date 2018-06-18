@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="grid" class="cls-1" d="M8,12h4V8H8Zm6,0h4V8H14Zm6-4v4h4V8ZM8,18h4V14H8Zm6,0h4V14H14Zm6,0h4V14H20ZM8,24h4V20H8Zm6,0h4V20H14Zm6,0h4V20H20Z" transform="translate(-8 -8)"/>
+</svg>

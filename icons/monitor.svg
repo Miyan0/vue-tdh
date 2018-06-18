@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="monitor" class="cls-1" d="M17,24.938H14V26.5L11,27v1h8.938v-.938L17,26.5ZM27,4H4A2,2,0,0,0,2,6V20a2,2,0,0,0,2,2H27a2,2,0,0,0,2-2V6A2,2,0,0,0,27,4ZM15.375,20.5a1,1,0,1,1,1-1A1,1,0,0,1,15.375,20.5ZM27,17H4V6H27Z" transform="translate(-2 -4)"/>
+</svg>

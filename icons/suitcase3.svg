@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 26">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="suitcase3" class="cls-1" d="M28,29H4a2,2,0,0,1-2-2V18H6v3h4V18H22v3h4V18h4v9A2,2,0,0,1,28,29Zm-5-9V16h2v4ZM7,20V16H9v4Zm19-5H22v2H10V15H6v2H2V10A2,2,0,0,1,4,8H28a2,2,0,0,1,2,2v7H26ZM19,4.979H13V7H11V6.021h1V3h8.021V6H21V7H19Z" transform="translate(-2 -3)"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20.938">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="barcode" class="cls-1" d="M29,6.031H3a2,2,0,0,0-2,2V24.969a2,2,0,0,0,2,2H29a2,2,0,0,0,2-2V8.031A2,2,0,0,0,29,6.031ZM6,23.969H4V9.031H6Zm2-1.938H7v-13H8Zm3,0H10v-13h1Zm3,0H12v-13h2Zm2,0H15v-13h1Zm4,0H18v-13h2Zm2,0H21v-13h1Zm3,0H24v-13h1Zm3,1.938H26V9.031h2Z" transform="translate(-1 -6.031)"/>
+</svg>

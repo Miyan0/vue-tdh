@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="microwave" class="cls-1" d="M35,28H27V5h8a1,1,0,0,1,1,1V27A1,1,0,0,1,35,28Zm-4-4h1V23H31Zm0-2h1V21H31Zm0-2h1V19H31Zm-2,4h1V23H29Zm0-2h1V21H29Zm0-2h1V19H29ZM34,9H29v3h5Zm0,10H33v1h1Zm0,2H33v1h1Zm0,2H33v1h1ZM0,27V6A1,1,0,0,1,1,5H26V28H1a1,1,0,0,1-1-1Zm24.039-9.491a1,1,0,1,0-1-1A1,1,0,0,0,24.039,17.509ZM4,23a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V10a1,1,0,0,0-1-1H5a1,1,0,0,0-1,1V23Z" transform="translate(0 -5)"/>
+</svg>

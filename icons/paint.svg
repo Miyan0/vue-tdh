@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="paint" class="cls-1" d="M26,13H16v2H14V12H26V6H25V9a1,1,0,0,1-1,1H6A1,1,0,0,1,5,9V5A1,1,0,0,1,6,4H24a1,1,0,0,1,1,1h2v8ZM23,5H7V6H23ZM17,26a2,2,0,0,1-4,0V16h4Zm-2-1.417a1,1,0,1,0,1,1A1,1,0,0,0,15,24.583Z" transform="translate(-5 -4)"/>
+</svg>

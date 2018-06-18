@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="calculator" class="cls-1" d="M24,5H8A1,1,0,0,0,7,6V27a1,1,0,0,0,1,1H24a1,1,0,0,0,1-1V6A1,1,0,0,0,24,5ZM9,15h2v2H9Zm0,3h2v2H9Zm0,3h2v2H9Zm5,5H9V24h5Zm0-3H12V21h2Zm0-3H12V18h2Zm0-3H12V15h2Zm3,9H15V24h2Zm0-3H15V21h2Zm0-3H15V18h2Zm0-3H15V15h2Zm3,9H18V24h2Zm0-3H18V21h2Zm0-3H18V18h2Zm0-3H18V15h2Zm3,9H21V21h2Zm0-6H21V18h2Zm0-3H21V15h2Zm0-4H9V7H23Z" transform="translate(-7 -5)"/>
+</svg>

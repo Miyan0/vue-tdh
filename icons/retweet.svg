@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.965 18.915">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="retweet" class="cls-1" d="M8.013,22.033V14.061h3.932l-5.9-6.892L.017,14.062H3.964v11.9H21.432l-3.923-3.924h-9.5ZM28.036,19V7.043H10.5l3.986,3.985h9.5V19H20.055l5.9,6.893L31.982,19H28.036Z" transform="translate(-0.017 -7.043)"/>
+</svg>

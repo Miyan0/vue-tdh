@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="phone" class="cls-1" d="M22,4H10A2,2,0,0,0,8,6V26a2,2,0,0,0,2,2H22a2,2,0,0,0,2-2V6A2,2,0,0,0,22,4ZM13,5h5l.062,1H13Zm2.979,21.5a1,1,0,1,1,1-1A1,1,0,0,1,15.979,26.5ZM22,23H10L10.02,7H22Z" transform="translate(-8 -4)"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="pin" class="cls-1" d="M20.5,15h-9a2,2,0,0,0,0,4h9a2,2,0,0,0,0-4ZM13.583,8,12.5,14h7L18.416,8ZM16,29l1.5-9h-3ZM13,7h6a1.5,1.5,0,0,0,0-3H13a1.5,1.5,0,0,0,0,3Z" transform="translate(-9.5 -4)"/>
+</svg>

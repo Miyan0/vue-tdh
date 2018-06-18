@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.004 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="watch" class="cls-1" d="M7,15H8v1H7v3H9V18H8V17H9V14H7v1Zm6,3h1V17H13Zm-3-3h1v1H10v1h1v1H10v1h2V14H10Zm3,1h1V15H13Zm2,3h3V14H15v5Zm1-4h1v3H16Zm4-1H19v3h2v2h1V14H21v2H20Zm8,0H27l0-4.029L21.376,4.01H20V2H9V4H7.6L2.012,9.876,2,22.092l5.567,5.836H9V30H20V27.94h1.341l5.649-5.88L27,19H28a1,1,0,0,0,1-1V15a1,1,0,0,0-1-1Zm-3.045,7.294-4.5,4.735-12-.011L4.035,21.329l.011-10.685L8.424,5.97l12.122.012,4.423,4.752-.012,10.56Z" transform="translate(-1.998 -2)"/>
+</svg>

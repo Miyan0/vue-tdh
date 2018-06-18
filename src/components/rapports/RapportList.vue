@@ -1,7 +1,7 @@
 <template>
   <div class="list-rapport">
     <div class="list-header">
-      <button class="btn btn-block btn-default" @click="loadRecords">Fetch Rapports</button>    
+      <button class="btn btn-block btn-default" @click="toggleDetail">toggleDetail</button>    
     </div>
     <ul >
         <rapport-list-item 
@@ -23,6 +23,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'RapportList',
+  props: ['toggleDetail'],
   components: {
     RapportListItem,
     AppPaginator
@@ -49,7 +50,7 @@ export default {
 
 <style scoped lang="scss">
   .list-rapport {
-      min-width: 30%;
+      // min-width: 30%;
       .list-header {
         margin-bottom: 1rem;
       }

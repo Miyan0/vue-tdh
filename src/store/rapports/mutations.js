@@ -29,6 +29,7 @@ export const mutations = {
     state.nextPageNumber = data.next_page_number
     state.prevPageNumber = data.prev_page_number
     state.pageNumber = data.page_number
+    state.selectedRapport = null
   },
   // updates for individual fields using a form
   // we only update the copy, the original will be updated

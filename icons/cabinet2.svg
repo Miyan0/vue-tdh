@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 29">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="cabinet2" class="cls-1" d="M5,31V6L9.167,2H21.834L26,6V31Zm1-1H25V7H6ZM7,19H24V29H7Zm6,4v1h5V21H17v2H14V21H13ZM7,8H24V18H7Zm6,5h5V10H17v2H14V10H13Z" transform="translate(-5 -2)"/>
+</svg>

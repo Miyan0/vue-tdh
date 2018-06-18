@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VModal from 'vue-js-modal'
+import * as svgicon from 'vue-svgicon'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 import store from './store'
 
@@ -13,11 +16,19 @@ import Rapports from './components/rapports/Rapports'
 
 import './sass/main.scss'
 
+
+Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(VModal, {
   dynamic: true,
   dialog: true
 })
+
+// Default tag name is 'svgicon'
+Vue.use(svgicon, {
+  tagName: 'svgicon'
+})
+
 
 export const router = new VueRouter({
   mode: 'history',

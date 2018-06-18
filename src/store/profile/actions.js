@@ -1,14 +1,16 @@
 // store/profile/actions.js
 import api from '@/api/django'
 import {router} from '../../main'
-import STORAGE_TOKEN_NAME from './index'
+import {saveToken, clearToken} from './index'
+
+
 
 export const actions = {
   login: ({ commit }, {username, password}) => {
     api.login(username, password)
       .then(response => {
         commit('setToken', response.data.token)
-        window.localStorage.setItem(STORAGE_TOKEN_NAME, response.data.token)
+        saveToken(response.data.token)
         router.push('/')
       })
       .catch(error => {
@@ -22,6 +24,6 @@ export const actions = {
   },
   logout: ({ commit }) => {
     commit('setToken', null)
-    window.localStorage.removeItem(STORAGE_TOKEN_NAME)
+    clearToken()
   }
 }

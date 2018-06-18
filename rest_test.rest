@@ -17,3 +17,10 @@ GET http://localhost:8000/api/payes/?ordering=memo&pay_year=2018
 Accept: */*
 Cache-Control: no-cache
 Authorization: Token c5c77bfae82fa61df18d2273e37c7bf421003cd0
+
+###
+
+GET http://localhost:8000/api/core/count
+Accept: */*
+Cache-Control: no-cache
+Authorization: Token c5c77bfae82fa61df18d2273e37c7bf421003cd0

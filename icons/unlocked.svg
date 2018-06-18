@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 29">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="unlocked" class="cls-1" d="M29,15V10.5a5.5,5.5,0,0,0-11,0v4.571h5V31H0V15H15V10a8,8,0,0,1,8-8h1a8,8,0,0,1,8,8v5ZM11.5,18.938a2,2,0,0,0-.756,3.85L10,28h3l-.745-5.213a2,2,0,0,0-.755-3.849Z" transform="translate(0 -2)"/>
+</svg>

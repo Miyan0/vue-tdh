@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="piano" class="cls-1" d="M0,28V5H31V28ZM6,18H5V6H1V27H6Zm6,0H11V6H8V18H7v9h5Zm6,0H17V6H14V18H13v9h5ZM20,6V18H19v9h5V18H23V6ZM30,6H26V18H25v9h5Z" transform="translate(0 -5)"/>
+</svg>

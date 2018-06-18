@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.488 26.572">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="crop" class="cls-1" d="M25,8.394V20.927h4.039v4.039H6.982V3.032h4.039V7.009H23.45L28.089,2.37l1.405,1.406ZM11.021,10.985V19.5l8.452-8.515Zm9.942,1.385-8.619,8.557h8.619ZM3.006,7.009H6.051v3.977H3.006ZM25,28.942H20.963V25.96H25Z" transform="translate(-3.006 -2.37)"/>
+</svg>

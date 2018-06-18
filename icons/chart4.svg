@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="chart4" class="cls-1" d="M3.987,4H3V28H29v-.963l-25-.05L3.987,4ZM17,5a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1V25h5Zm-6,6a1,1,0,0,0-1-1H7a1,1,0,0,0-1,1V25h5Zm12,6a1,1,0,0,0-1-1H19a1,1,0,0,0-1,1v8h5Zm5,5H25a1,1,0,0,0-1,1v2h5V23A1,1,0,0,0,28,22Z" transform="translate(-3 -4)"/>
+</svg>

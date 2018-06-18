@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 28">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="switch" class="cls-1" d="M4,2V30H27V2ZM6.5,28.541a1,1,0,1,1,1-1A1,1,0,0,1,6.5,28.541ZM6.521,5.5a1,1,0,1,1,1-1A1,1,0,0,1,6.521,5.5ZM21,26H10V6H21Zm3.458,2.458a1,1,0,1,1,1-1A1,1,0,0,1,24.458,28.458ZM24.479,5.5a1,1,0,1,1,1-1A1,1,0,0,1,24.479,5.5ZM19,8H12V18h7Zm0,11H12v5h7Z" transform="translate(-4 -2)"/>
+</svg>

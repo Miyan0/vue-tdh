@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27.938">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="health" class="cls-1" d="M27,28.031H25v1.938H21V28.031H10v1.938H6V28.031H4a2,2,0,0,1-2-2v-17a2,2,0,0,1,2-2H27a2,2,0,0,1,2,2v17A2,2,0,0,1,27,28.031Zm-6-12H17v-4H14v4H10v3h4v4h3v-4h4ZM19,4.01H13V6.031H11V5.052h1V2.031h7.958v3H21v1H19Z" transform="translate(-2 -2.031)"/>
+</svg>

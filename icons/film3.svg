@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="film3" class="cls-1" d="M24,17a2,2,0,0,0-2,2v4H17V9H28v8Zm-5-7H18v2h1Zm0,10H18v2h1Zm2-10H20v2h1Zm0,10H20v2h1Zm2-10H22v2h1Zm2,0H24v2h1Zm2,0H26v2h1ZM4,6H17V8H4ZM16,9V23H5V9Zm1,17H4V24H17Z" transform="translate(-4 -6)"/>
+</svg>

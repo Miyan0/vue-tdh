@@ -17,6 +17,7 @@ html {
 body {
     box-sizing: border-box;
     background: $color-background;
+    height: 100vh;
 
     &.modal-open {
         overflow: hidden;

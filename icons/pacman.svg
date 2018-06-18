@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.609 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="pacman" class="cls-1" d="M17.362,16.438,25.7,24.921A12,12,0,1,1,26.3,7.65Zm.812-8.48a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,18.174,7.958Z" transform="translate(-5.695 -4)"/>
+</svg>

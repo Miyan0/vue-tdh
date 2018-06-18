@@ -516,7 +516,7 @@ export default {
   @import "../../sass/abstracts/_variables";
   
   .detail {
-    min-width: 65%;
+    // min-width: 65%;
     margin-left: 2rem;
     margin-right: 2rem;
     // color: $color-primary;

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #76706b;
+      }
+    </style>
+  </defs>
+  <path id="battery" class="cls-1" d="M28,14H27V13a2,2,0,0,0-2-2H5a2,2,0,0,0-2,2v7a2,2,0,0,0,2,2H25a2,2,0,0,0,2-2V19h1a1,1,0,0,0,1-1V15A1,1,0,0,0,28,14Zm-2,6a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V13a1,1,0,0,1,1-1H25a1,1,0,0,1,1,1ZM5,20h6V13H5Zm7,0h6V13H12Zm7,0h6V13H19Z" transform="translate(-3 -11)"/>
+</svg>
