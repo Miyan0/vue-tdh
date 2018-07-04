@@ -2,29 +2,29 @@
 import { getters } from './getters'
 import { actions } from './actions'
 import { mutations } from './mutations'
+import { PROCEDURE_TYPES } from '@/app_constants'
 
 
 
-
-const buildProcedureTypes = () => {
-  return [
-    'Inconnu',
-    'Avis d\'instruction',
-    'Avis d\'audition',
-    'Avis de présentation',
-    'Avis aux parents',
-    'Constat',
-    'Saisie-arrêt',
-    'SPI',
-    'BAM',
-    'Sign. Affaires',
-    'Subpoena',
-    'Acte d\'assignation',
-    'Mandat Perquisition',
-    'Avis de convocation',
-    'Avis d\'exécution',
-  ]
-}
+// const buildProcedureTypes = () => {
+//   return [
+//     'Inconnu',
+//     'Avis d\'instruction',
+//     'Avis d\'audition',
+//     'Avis de présentation',
+//     'Avis aux parents',
+//     'Constat',
+//     'Saisie-arrêt',
+//     'SPI',
+//     'BAM',
+//     'Sign. Affaires',
+//     'Subpoena',
+//     'Acte d\'assignation',
+//     'Mandat Perquisition',
+//     'Avis de convocation',
+//     'Avis d\'exécution',
+//   ]
+// }
 
 const buildRapportTypes = () => {
   return ['Inconnu', 'Démarche']
@@ -33,7 +33,8 @@ const buildRapportTypes = () => {
 
 
 const state = {
-  procedureTypes: buildProcedureTypes(),
+  // procedureTypes: buildProcedureTypes(),
+  procedureTypes: PROCEDURE_TYPES,
   rapportTypes: buildRapportTypes(),
   rapports: [],
   selectedRapport: null,

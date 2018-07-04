@@ -58,7 +58,7 @@ export const actions = {
       const { data } = await api.get(url, token)
       commit('updateRapports', data)
     } catch(error) {
-      api.handleError(error, 'fetchRapport')
+      api.handleError(error, 'fetchRapports')
     }
   },
 

@@ -16,15 +16,19 @@
       <li>Connect</li>
     </ul>
   </transition>
+
+  <button class="btn btn-primary">Sass</button>
+
 </div>
 </template>
 
 <script>
 import ContentHeader from '@/components/layout/ContentHeader'
 import { DASHBOARD_ICON } from '@/app_constants'
+
 export default {
   components: {
-    ContentHeader
+    ContentHeader,
   },
   data() {
     return {

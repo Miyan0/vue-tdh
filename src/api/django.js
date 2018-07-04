@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { ROOT_URL, TOKEN_ENPOINT } from '@/app_constants'
 
+// NOTE: see this article:
+// https://itnext.io/anyway-heres-how-to-do-ajax-api-calls-with-vue-js-e71e57d5cf12
+
 const buildHeaders = (token) => {
   const head =  {
     'headers': {

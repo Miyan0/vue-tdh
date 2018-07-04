@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VModal from 'vue-js-modal'
 import * as svgicon from 'vue-svgicon'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 
 import store from './store'
 
@@ -16,8 +14,25 @@ import Rapports from './components/rapports/Rapports'
 
 import './sass/main.scss'
 
+import { formatNoCause, formatProcedureType, formatAddressOneLine, formatDateTime } from '@/utils/filters'
 
-Vue.use(ElementUI)
+Vue.filter('noCause', value => {
+  return formatNoCause(value)
+})
+
+Vue.filter('procedureType', value => {
+  return formatProcedureType(value)
+})
+
+Vue.filter('addressOneLine', value => {
+  return formatAddressOneLine(value)
+})
+
+Vue.filter('dateSplit', value => {
+  return formatDateTime(value)
+})
+
+
 Vue.use(VueRouter)
 Vue.use(VModal, {
   dynamic: true,

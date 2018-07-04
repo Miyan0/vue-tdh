@@ -11,6 +11,18 @@ const formatAddress = (rapport) => {
 
 const formatNoCause = (numero) => {
 
+  if (numero == null) {
+    // console.log('numero is null')
+    return null
+  }
+
+  if (numero == undefined) {
+    // console.log('numero is undefined')
+    return undefined
+  }
+
+  // console.log('numero :', numero)
+
   if (numero.length !== 9) {
     return numero
   }

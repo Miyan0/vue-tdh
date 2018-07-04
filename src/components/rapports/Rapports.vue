@@ -10,7 +10,7 @@
     ></content-header>
     
       <div class="master-detail" v-if="isAuthenticated">
-        <rapport-list :toggleDetail="toggleDetail"></rapport-list>
+        <app-table-view :titles="titles" :data="allRapports" />
         <transition name=bounce>
           <rapport-detail2 v-if="selectedRapport"></rapport-detail2>
          </transition>
@@ -24,18 +24,24 @@
 </template>
 
 <script>
+
+// <rapport-list :toggleDetail="toggleDetail"></rapport-list>
+
 import RapportDetail from './RapportDetail'
 import RapportDetail2 from './RapportDetail2'
 import RapportList from './RapportList'
 import ContentHeader from '@/components/layout/ContentHeader'
 import { mapGetters, mapActions } from 'vuex'
 import {RAPPORTS_ICON} from '@/app_constants'
+import AppTableView from '@/components/common/AppTableView'
+// import helpers from './helpers'
 
 export default {
   name: 'Rapports',
 
   mounted() {
     this.fetchAllRues()
+    this.loadRecords()
   },
 
   data() {
@@ -44,12 +50,21 @@ export default {
       showDetail: false
     }
   },
+  
+    
 
   methods: {
-    ...mapActions(['fetchAllRues']),
+    ...mapActions(['fetchRapports', 'nextPage', 'prevPage', 'fetchAllRues']),
     toggleDetail() {
       this.showDetail = this.selectedRapport !== null 
-    }
+    },
+    loadRecords() {
+      this.fetchRapports({
+        limit: 20,
+        no_lot__gte: 258
+        // no_cause__iexact: '83417302333'
+      })
+    },
 
   },
 
@@ -57,17 +72,23 @@ export default {
     RapportDetail,
     RapportDetail2,
     RapportList,
-    ContentHeader
+    ContentHeader,
+    AppTableView
   },
   computed:{
-    ...mapGetters(['isAuthenticated', 'selectedRapport']),
-    demarcheDate() {
-      if (this.selectedRapport) {
-        return this.selectedRapport.demarche_date
-      }
-      return 'no selected rapport'
+    ...mapGetters(['isAuthenticated', 'selectedRapport','allRapports', 'hasNext', 'hasPrev', 'pageNumber', 'pageCount', 'procedureTypes']),
+    titles() {
+      return ['Procédure','Lot', 'No Cause', 'Adresse', 'Démarche', 'Secteur']
+    },
+    
+  },
+  demarcheDate() {
+    if (this.selectedRapport) {
+      return this.selectedRapport.demarche_date
     }
-  }
+    return 'no selected rapport'
+  },
+ 
   
 }
 </script>

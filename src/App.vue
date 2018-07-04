@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <main-sidebar></main-sidebar>
+    <MainSidebar />
     <main v-if="isAuthenticated" class="content">
       <router-view></router-view>
     </main>
@@ -54,7 +54,7 @@ export default {
     height: 100%;
 
     main {
-      margin: 1rem;
+      margin-left: 20rem;
     }
     
     
