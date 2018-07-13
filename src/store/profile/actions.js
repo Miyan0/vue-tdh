@@ -1,6 +1,6 @@
 // store/profile/actions.js
 import api from '@/api/django'
-import {router} from '../../main'
+import {router} from '@/router'
 import {saveToken, clearToken} from './index'
 
 

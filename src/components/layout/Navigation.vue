@@ -12,6 +12,9 @@
           <router-link class="nav-link" tag='li' to="/factures"  >
             Facturation
           </router-link>
+          <router-link class="nav-link" tag='li' to="/lots"  >
+            PVs
+          </router-link>
           <router-link class="nav-link" tag='li' to="/rapports"  >
             Rapports
           </router-link>

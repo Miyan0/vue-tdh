@@ -21,6 +21,7 @@ export const mutations = {
   //   state.rapports = [...rapports]
   // },
   updateRapports: (state, data) => {
+    console.log('Updating rapports ( mutation )')
     state.rapports = [...data.results]
     state.nextPageLink = data.links.next
     state.prevPageLink = data.links.previous

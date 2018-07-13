@@ -19,7 +19,7 @@
 <script>
 import RapportListItem from './RapportListItem'
 import AppPaginator from '../common/AppPaginator'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'RapportList',
@@ -32,19 +32,15 @@ export default {
     ...mapGetters(['allRapports', 'hasNext', 'hasPrev', 'pageNumber', 'pageCount'])
   },
   created() {
-    this.loadRecords()
+    // this.loadRecords()
   },
 
-  methods: {
-    ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
-    loadRecords() {
-      this.fetchRapports({
-        limit: 10,
-        no_lot__gte: 258
-        // no_cause__iexact: '83417302333'
-      })
-    }
-  }
+  // methods: {
+  //   ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
+  //   loadRecords() {
+  //     this.fetchRapports(this.$route.query)
+  //   }
+  // }
 }
 </script>
 

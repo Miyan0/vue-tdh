@@ -53,7 +53,7 @@ export const actions = {
       url = `${url}${query}`
     }
     const { token } = rootState.profile
-    console.log('fetchRapports, token :', token)
+    console.log('fetchRapports, query :', query)
     try {
       const { data } = await api.get(url, token)
       commit('updateRapports', data)

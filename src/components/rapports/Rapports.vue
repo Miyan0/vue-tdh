@@ -41,7 +41,8 @@ export default {
 
   mounted() {
     this.fetchAllRues()
-    this.loadRecords()
+    this.loadRecords(this.$route.query)
+    console.log('params :', this.$route.query)
   },
 
   data() {
@@ -58,12 +59,8 @@ export default {
     toggleDetail() {
       this.showDetail = this.selectedRapport !== null 
     },
-    loadRecords() {
-      this.fetchRapports({
-        limit: 20,
-        no_lot__gte: 258
-        // no_cause__iexact: '83417302333'
-      })
+    loadRecords(query) {
+      this.fetchRapports(query)
     },
 
   },

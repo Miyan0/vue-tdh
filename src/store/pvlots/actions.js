@@ -4,7 +4,7 @@ import { LOTS_URL } from '@/app_constants'
 
 export const actions = {
 
-  async fetchLots ({commit, rootState}, params){
+  async fetchLots ({commit, rootState}, params) {
     let query = ''
     let url = LOTS_URL
     if (params  !== null) {

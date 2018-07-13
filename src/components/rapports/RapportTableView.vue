@@ -78,13 +78,13 @@ export default {
 
     ...mapActions(['fetchRapports', 'nextPage', 'prevPage']),
 
-    loadRecords() {
-      this.fetchRapports({
-        limit: 50,
-        no_lot__gte: 258
-        // no_cause__iexact: '83417302333'
-      })
-    },
+    // loadRecords() {
+    //   this.fetchRapports({
+    //     limit: 50,
+    //     no_lot__gte: 258
+    //     // no_cause__iexact: '83417302333'
+    //   })
+    // },
     // eslint-disable-next-line
     rowStyle({row, index}) {
       return {
@@ -125,7 +125,7 @@ export default {
     
   },
   created() {
-    this.loadRecords()
+    // this.loadRecords()
   },
   data() {
     return {

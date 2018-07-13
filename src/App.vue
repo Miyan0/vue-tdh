@@ -1,6 +1,6 @@
 <template>
   <div id="app" >
-    <MainSidebar />
+    <Navigation />
     <main v-if="isAuthenticated" class="content">
       <router-view></router-view>
     </main>
@@ -13,8 +13,8 @@
 
 <script>
 import AppHeader from '@/components/layout/AppHeader'
-// import Navigation from '@/components/layout/Navigation'
-import MainSidebar from '@/components/layout/MainSidebar'
+import Navigation from '@/components/layout/Navigation'
+// import MainSidebar from '@/components/layout/MainSidebar'
 
 import Login from '@/components/Login'
 import { mapGetters } from 'vuex'
@@ -24,8 +24,8 @@ export default {
   
   components: {
     AppHeader,
-    // Navigation,
-    MainSidebar,
+    Navigation,
+    // MainSidebar,
     Login
   },
   computed: mapGetters(['isAuthenticated']),

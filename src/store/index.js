@@ -5,6 +5,7 @@ import Vue from 'vue'
 import profile from './profile'
 import rapports from './rapports'
 import rues from './rues'
+import lots from './pvlots'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
   modules: {
     profile,
     rapports,
-    rues
+    rues,
+    lots
   }
 })
